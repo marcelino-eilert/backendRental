@@ -1,3 +1,14 @@
-interface ISpecificationsRepository {}
+import { Specification } from "../model/Specification";
 
-export { ISpecificationsRepository };
+interface ICreateRepositoryDTO {
+  name: string;
+  description: string;
+}
+
+interface ISpecificationsRepository {
+  create({ name, description }: ICreateRepositoryDTO);
+  findByName(name: string): Specification;
+  list(): Specification[];
+}
+
+export { ISpecificationsRepository, ICreateRepositoryDTO };
